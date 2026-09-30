@@ -1,44 +1,40 @@
-import { useEffect, useRef } from 'react'
 import RevealText from './RevealText'
 import { LOCATION_GOOGLE_URL, LOCATION_TITLE, LOCATION_COORDS } from '../lib/config'
 
-const DGIS_KEY = 'ВАШ_ДЕМО_КЛЮЧ' // platform.2gis.ru → Create a Demo Key
+// Keyless OpenStreetMap embed — real streets + a pin, no API key required.
+// A small bounding box around the venue keeps it zoomed in on the location.
+const { lat, lon } = LOCATION_COORDS
+const bbox = [lon - 0.004, lat - 0.0025, lon + 0.004, lat + 0.0025].join('%2C')
+const OSM_EMBED_URL =
+  `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}` +
+  `&layer=mapnik&marker=${lat}%2C${lon}`
 
 export default function LocationMap() {
-  const mapRef = useRef(null)
-
-  useEffect(() => {
-    let map
-    const script = document.createElement('script')
-    script.src = `https://maps.api.2gis.ru/2.0/loader.js?pkg=full&key=${DGIS_KEY}`
-    script.onload = () => {
-      window.DG.then(() => {
-        map = window.DG.map(mapRef.current, {
-          center: [LOCATION_COORDS.lat, LOCATION_COORDS.lon],
-          zoom: 16,
-        })
-        window.DG.marker([LOCATION_COORDS.lat, LOCATION_COORDS.lon]).addTo(map)
-      })
-    }
-    document.body.appendChild(script)
-
-    return () => {
-      if (map) map.remove()
-      document.body.removeChild(script)
-    }
-  }, [])
-
   return (
     <>
       <RevealText
         as="div"
         gradient
-        className="text-center font-display text-[clamp(1.6rem,7vw,2.125rem)] font-semibold leading-[1.25] tracking-[0.015em]"
+        className="text-center font-display text-[clamp(1.35rem,6vw,1.75rem)] font-semibold leading-[1.25] tracking-[0.015em]"
         text={LOCATION_TITLE}
       />
 
       <div className="mx-auto my-[40px] w-full max-w-[440px] overflow-hidden rounded-[16px] shadow-[0_10px_30px_-8px_rgba(120,100,60,0.35)] ring-1 ring-black/5">
-        <div ref={mapRef} className="h-[clamp(260px,72vw,360px)] w-full" />
+        {/* The map is display-only; tapping it opens 2GIS for navigation. */}
+        <a
+          href={LOCATION_GOOGLE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Открыть карту в 2GIS"
+          className="relative block h-[clamp(260px,72vw,360px)] w-full"
+        >
+          <iframe
+            title="Карта — место проведения"
+            src={OSM_EMBED_URL}
+            className="pointer-events-none h-full w-full border-0"
+            loading="lazy"
+          />
+        </a>
 
         <a
           href={LOCATION_GOOGLE_URL}

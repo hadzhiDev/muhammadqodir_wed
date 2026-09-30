@@ -39,9 +39,9 @@ export default function InvitationCard({ name, start }) {
       <div className="relative z-[2] flex h-[540px] w-[min(300px,80%)] flex-col items-center justify-start gap-[clamp(0.7rem,3.2vw,1.25rem)] text-center max-[440px]:h-auto">
         <div className="mx-auto flex items-center justify-center gap-[clamp(0.5rem,2.5vw,0.75rem)] font-display leading-none">
           <span aria-hidden className="rule-gold h-px w-[clamp(1.5rem,7vw,2.25rem)]" />
-          <span className="text-onlight text-[clamp(2.1rem,10.5vw,2.875rem)] tracking-[0.02em]">А</span>
-          <span className="text-gold font-cormorant text-[clamp(1.7rem,8vw,2rem)] italic">&</span>
           <span className="text-onlight text-[clamp(2.1rem,10.5vw,2.875rem)] tracking-[0.02em]">М</span>
+          <span className="text-gold font-cormorant text-[clamp(1.7rem,8vw,2rem)] italic">&</span>
+          <span className="text-onlight text-[clamp(2.1rem,10.5vw,2.875rem)] tracking-[0.02em]">О</span>
           <span aria-hidden className="rule-gold--rev h-px w-[clamp(1.5rem,7vw,2.25rem)]" />
         </div>
 

@@ -4,26 +4,26 @@
 
 // Wedding date in ISO format: YYYY-MM-DD (drives the big date block,
 // the prose date, and the countdown timer)
-export const WEDDING_DATE = '2026-08-29'
+export const WEDDING_DATE = '2026-10-25'
 
 // Venue coordinates (lat, lon).
-export const LOCATION_COORDS = { lat:40.530214, lon: 72.808588 }
+export const LOCATION_COORDS = { lat: 40.553450, lon: 72.794447 }
 
 // Embedded map — OpenStreetMap renders keyless with real streets + a pin.
 // (Google/2GIS both require a paid API key to embed a live map.)
 export const LOCATION_MAP_URL =
-  'https://2gis.kg/osh/firm/70000001040806856/72.808588%2C40.530214?m=72.808969%2C40.530199%2F19.96'
-  
+  'https://2gis.kg/bishkek/geo/70030076150196103/72.794447,40.553450'
+
 // "Open in Google Maps" button target (opens the native app/site for navigation).
 export const LOCATION_GOOGLE_URL =
-  'https://2gis.kg/osh/firm/70000001040806856/72.808588%2C40.530214?m=72.808969%2C40.530199%2F19.96'
+  'https://2gis.kg/bishkek/geo/70030076150196103/72.794447,40.553450'
 
 // Address title shown above the map (\n becomes a line break)
-export const LOCATION_TITLE = 'Манзил: "Нооруз" Ресторани\nАскар Шакиров, 240а/1'
+export const LOCATION_TITLE = 'Манзил: "Улица Джим, 128"'
 
 // Program of the day (label + time). Edit / add / remove freely.
 export const STAGES = [
-  { label: 'Нахорги нонушта', time: '06:00', side: 'left' },
+  { label: 'Нахорги нонушта', time: '07:00', side: 'left' },
   { label: 'Аёллар учун:\n(Тугунсиз)', time: '10:00', side: 'right' },
   { label: 'Куёв Навкар', time: '13:00', side: 'left' },
   // { label: 'Фуршет\nманзил: Исхака Раззакова, 23\n“Орто Азия”', time: '16:00', side: 'right' },

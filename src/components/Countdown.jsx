@@ -58,6 +58,28 @@ export default function Countdown() {
         className="w-full"
       />
 
+      {/* The baked-in "А & М" monogram in block_2.png is masked with a
+          cream patch (#FAF4EE, sampled from the art) and replaced with a
+          crisp, live "М & О" monogram so it stays sharp at any size. */}
+      <div className="pointer-events-none absolute inset-0">
+        {/* cream mask over the old monogram (x 34.7–67.9%, y ~25.1%) */}
+        <div
+          className="absolute"
+          style={{ left: '28%', right: '28%', top: '22.2%', height: '5.6%', background: '#FAF4EE' }}
+        />
+        {/* new monogram, vertically centred on the old one */}
+        <div
+          className="absolute inset-x-0 flex items-center justify-center gap-[clamp(0.4rem,2.2vw,0.7rem)] font-display leading-none"
+          style={{ top: '25.1%', transform: 'translateY(-50%)' }}
+        >
+          <span aria-hidden className="rule-gold h-px w-[clamp(1rem,5vw,1.6rem)]" />
+          <span className="text-graphite text-[clamp(1.05rem,5.4vw,1.6rem)] tracking-[0.02em]">М</span>
+          <span className="text-gold font-cormorant text-[clamp(0.85rem,4.4vw,1.25rem)] italic">&</span>
+          <span className="text-graphite text-[clamp(1.05rem,5.4vw,1.6rem)] tracking-[0.02em]">О</span>
+          <span aria-hidden className="rule-gold--rev h-px w-[clamp(1rem,5vw,1.6rem)]" />
+        </div>
+      </div>
+
       <motion.div
         className="absolute bottom-[31.5%] left-0 right-0 mx-auto w-full max-w-[60%] text-graphite"
         initial={{ opacity: 0, scale: 0.92 }}
